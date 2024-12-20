@@ -1,0 +1,25 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: siriosoft
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: my-api
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: my-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  registerUser:
+    handler: handler.registerUser
+    events:
+      - http:
+          path: users/register
+          method: post
+  getUser:
+    handler: handler.getUser
+    events:
+      - http:
+          path: users/get 
+          method: get
+
